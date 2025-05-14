@@ -7,7 +7,8 @@ function clearmessage(){
     message.innerText = " ";
 }
 signInButton.addEventListener("click",(event) => {
-   // alert("Hello World");
+   // This is test commit
+
     event.preventDefault();
     console.log(userName.value,password.value);
     if(userName.value === "" || password.value === ""){
