@@ -65,10 +65,51 @@ var list_fooditems = [
 ]
 
 // add all food items from the list_fooditems array into the table
-
+function loadAllFoodItems(){
+    for(var i = 0; i < list_fooditems.length; i++){
+        var foodItem = list_fooditems[i];
+        addfoodItem(foodItem, i+1);
+    }
+}
 
 // add One fooditem into the table
+function addfoodItem(foodItemObject, number){
+    var foodItem= document.getElementById("foodItemsTable");
+    var body = document.querySelector("tbody");
+    let row = document.createElement("tr");
 
+    row.innerHTML = 
+    `<td> ${number}</td>
+    <td> ${foodItemObject.name}</td>
+    <td> ${foodItemObject.description}</td>
+    <td> ${foodItemObject.inStock}</td>
+    <td> ${foodItemObject.isVeg}</td>
+    <td> ${foodItemObject.category}</td>
+    <td> ${foodItemObject.cuisine}</td>
+    `;
+    row.innerHTML += foodItemObject.foodImage != "" ? 
+    `<td>
+        <img src="${foodItemObject.foodImage}" alt = "" width ="120 px" height= "120 px"  class = "mx-auto d-block"> </img>
+    </td>`  : 
+    `<td>"NO Image"</td>`;
+    row.innerHTML += `<td> <a href=""> <button class ="table-btn">Edit</button></a></tb>`;
 
+    body.appendChild(row);
+    foodItem.appendChild(body);
+    console.log("FoodItem Added");
+}
+function addNewFoodItem(){
+    var params= new URLSearchParams(window.location.search);
+    if(params.size > 0){
+        var foodItem=Object.fromEntries(params.entries());
+        list_fooditems.push(foodItem);
+        addfoodItem(foodItem,list_fooditems.length);
+    }
+    
+}
 // Fetch the food item from the URL and add it to the list_fooditems array and the table
+loadAllFoodItems();
+addNewFoodItem();
+
+
 

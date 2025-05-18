@@ -1,17 +1,17 @@
-var foodItemForm = document.getElementById("foodItemForm");
+var form = document.getElementById("foodItemForm");
 if(form){
-    form.addEventlistener("submit", function(event){
+    form.addEventListener("submit", function(event){
         
         Event.preventDefault();
         console.log("form submitted");
 
-        var fname = document.getElementById("fname").value;
-        var desc = document.getElementById("desc").value;
-        var instock = document.getElementById("instock").check ? "yes" : "no";
+        var name = document.getElementById("name").value;
+        var description = document.getElementById("description").value;
+        var inStock = document.getElementById("inStock").check ? "yes" : "no";
         var isVeg = document.getElementById("isVeg").check ? "yes" : "no";
         var category = document.getElementById("category").value;
         var cuisine = document.getElementById("cuisine").value;
-        var foodimg = document.getElementById("foodimg").value;
+        var foodImage = document.getElementById("foodImage").value;
     
         console.log(category);
         if(category === ""){
@@ -19,13 +19,13 @@ if(form){
             return;
         }
         var newFoodItem ={
-            fname,
-            desc,
-            instock,
+            name,
+            description,
+            inStock,
             isVeg,
             category,
             cuisine,
-            foodimg
+            foodImage
         }
         //alert("New  foodItem Added - " + fname);
         console.log(newFoodItem);
